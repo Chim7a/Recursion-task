@@ -35,27 +35,64 @@ printTicket.getUsersAge();
 the user for the current temperature and whether it is raining or not. 
 Based on this information, advise the user on what clothing to wear. */
 
+// Class object to get clothing advice
 class WeatherAdviser {
-  constructor(currentTemperature) {
+  constructor(currentTemperature, isRaining) {
     this.currentTemperature = currentTemperature;
+    this.isRaining = isRaining;
   }
 
+  // Check the temperature and provide clothing advice
   getWeatherAdvise() {
+    let advice = "";
     switch (true) {
-      case this.currentTemperature >= 90:
-        return console.log("A");
-      case this.currentTemperature >= 80:
-        return console.log("B");
-      case this.currentTemperature >= 70:
-        return console.log("C");
-      case this.currentTemperature >= 60:
-        return console.log("D");
-      case this.currentTemperature <= 59:
-        return console.log("F");
+      case this.currentTemperature < 0:
+        advice = "It's freezing! Wear a heavy winter coat, scarf, and gloves.";
+        return console.log(advice);
+      case this.currentTemperature >= 0 && this.currentTemperature <= 10:
+        advice = "It's cold outside. Wear a coat and a warm sweater.";
+        return console.log(advice);
+      case this.currentTemperature > 10 && this.currentTemperature <= 20:
+        advice =
+          "The weather is cool. A light jacket or sweater should be fine.";
+        return console.log(advice);
+      case this.currentTemperature > 20 && this.currentTemperature <= 30:
+        advice = "It's warm. Wear light clothing like a t-shirt and shorts.";
+        return console.log(advice);
+      default:
+        advice = "It's really hot! Stay cool with shorts and a t-shirt.";
+        return console.log(advice);
+    }
+  }
+
+  // Check if it's raining
+
+  checkRainStatus() {
+    let advice = "";
+    if (this.isRaining === "raining") {
+      advice = " Also, don't forget to take an umbrella or a raincoat.";
+      return console.log(advice);
     }
   }
 }
 
-const weatherAdviser = new WeatherAdviser(89);
+const weatherAdviser = new WeatherAdviser(35, "raining");
 
 weatherAdviser.getWeatherAdvise();
+weatherAdviser.checkRainStatus();
+
+function fibonacci(n) {
+  // Base cases: F(0) = 0 and F(1) = 1
+  if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  }
+
+  // Recursive case: F(n) = F(n-1) + F(n-2)
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Example usage:
+let n = 10; // For example, to find the 10th Fibonacci number
+console.log(`Fibonacci(${n}) =`, fibonacci(n));
