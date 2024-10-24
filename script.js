@@ -81,6 +81,12 @@ const weatherAdviser = new WeatherAdviser(35, "raining");
 weatherAdviser.getWeatherAdvise();
 weatherAdviser.checkRainStatus();
 
+/** Fibonacci Sequence: Implement a recursive function to generate the nth Fibonacci number.
+ * The Fibonacci sequence starts with 0 and 1, and
+ * each subsequent number is the sum of the two
+ * preceding numbers (0, 1, 1, 2, 3, 5, 8, ...)
+ * **/
+
 function fibonacci(n) {
   // Base cases: F(0) = 0 and F(1) = 1
   if (n === 0) {
@@ -96,3 +102,21 @@ function fibonacci(n) {
 // Example usage:
 let n = 10; // For example, to find the 10th Fibonacci number
 console.log(`Fibonacci(${n}) =`, fibonacci(n));
+
+/* Power Function: Write a recursive function to calculate 
+the result of raising a number to a given power. */
+
+function power(base, exponent) {
+  // Base case: any number raised to the power of 0 is 1
+  if (exponent === 0) {
+    return 1;
+  }
+
+  // Recursive case: base^exponent = base * base^(exponent-1)
+  return base * power(base, exponent - 1);
+}
+
+// Example usage:
+let base = 2;
+let exponent = 5;
+console.log(`${base}^${exponent} =`, power(base, exponent));
